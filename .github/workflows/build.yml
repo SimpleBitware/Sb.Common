@@ -10,6 +10,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: read
     steps:
     - uses: actions/checkout@v4
 
@@ -29,8 +32,6 @@ jobs:
 
     - name: Calculate build number
       id: "build_number"
-      outputs:
-        BUILD_VERSION: ${{ steps.build_number.outputs.BUILD_VERSION }}
       run: |
         git fetch --tags
         latest_tag=$(git tag --list --sort=-version:refname "v*" | head -n 1)
@@ -46,10 +47,10 @@ jobs:
           exit 1
         fi
 
-      - name: Push GitHub Tag
-        if: github.ref == 'refs/heads/main'
-        env:
-          BUILD_VERSION: ${{ steps.build_number.outputs.BUILD_VERSION }}
-        run: |
-          git tag v${BUILD_VERSION}
-          git push origin v${BUILD_VERSION}
+    - name: Push GitHub Tag
+      if: github.ref == 'refs/heads/main'
+      env:
+        BUILD_VERSION: ${{ steps.build_number.outputs.BUILD_VERSION }}
+      run: |
+        git tag v${BUILD_VERSION}
+        git push origin v${BUILD_VERSION}
