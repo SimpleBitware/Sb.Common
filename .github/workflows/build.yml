@@ -12,13 +12,44 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build --no-restore
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: Calculate build number
+      id: "build_number"
+      outputs:
+        BUILD_VERSION: ${{ steps.build_number.outputs.BUILD_VERSION }}
+      run: |
+        git fetch --tags
+        latest_tag=$(git tag --list --sort=-version:refname "v*" | head -n 1)
+        echo "Latest tag found: ${latest_tag}"
+        latest_tag="${latest_tag:-v0.0.0}"
+        echo "Latest tag adjusted: ${latest_tag}"
+        if [[ ${latest_tag} =~ ^v?([0-9]+)\.([0-9]+)\.([0-9]+) ]] && [[ ${#BASH_REMATCH[@]} -gt 3 ]]
+        then
+          new_tag="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((${BASH_REMATCH[3]} + 1))"
+          echo "BUILD_VERSION=${new_tag}" >> $GITHUB_OUTPUT
+        else
+          echo "Latest tag invalid."
+          exit 1
+        fi
+
+      - name: Push GitHub Tag
+        if: github.ref == 'refs/heads/main'
+        env:
+          BUILD_VERSION: ${{ steps.build_number.outputs.BUILD_VERSION }}
+        run: |
+          git tag v${BUILD_VERSION}
+          git push origin v${BUILD_VERSION}
