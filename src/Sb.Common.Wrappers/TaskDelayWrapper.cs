@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Sb.CommonWrappers
+namespace Sb.Common.Wrappers
 {
     public class TaskDelayWrapper : ITaskDelayWrapper
     {

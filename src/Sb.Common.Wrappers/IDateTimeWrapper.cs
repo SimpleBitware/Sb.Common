@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sb.CommonWrappers
+namespace Sb.Common.Wrappers
 {
     public interface IDateTimeWrapper
     {
