@@ -1,3 +1,3 @@
 # Wrappers
 
-Commonly used c# utility classes
+Commonly used utility classes
