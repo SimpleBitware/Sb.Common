@@ -3,11 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
-    <Title>Commonly used .net wrappers</Title>
+    <Title>Commonly used .net utility classes</Title>
     <Authors>Lucian Bornaz</Authors>
     <Company>Simple Bitware</Company>
     <Description>Commonly used wrappers for .net static classes</Description>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
