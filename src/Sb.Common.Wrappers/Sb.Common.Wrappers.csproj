@@ -12,6 +12,7 @@
     <PackageId>Sb.Common.Wrappers</PackageId>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/SimpleBitware/Sb.Common</RepositoryUrl>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 
   <ItemGroup>
