@@ -4,7 +4,8 @@ namespace Sb.Common.Wrappers
 {
     public interface IDateTimeWrapper
     {
-        public DateTime Now { get; }
-        public DateTime UtcNow { get; }
+        DateTime Now { get; }
+        DateTime UtcNow { get; }
+        DateTime Today { get; }
     }
 }
