@@ -2,7 +2,7 @@
 
 namespace Sb.Common.Wrappers
 {
-    public class DateTimeWrapper : IDateTimeWrapper
+    public class DateTimeWrapper : IDateTime
     {
         public DateTime Now => DateTime.Now;
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sb.Common.Wrappers
 {
-    public class FileWrapper : IFileWrapper
+    public class FileWrapper : IFile
     {
         public void AppendAllLines(string path, IEnumerable<string> contents)
         {

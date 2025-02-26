@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Sb.Common.Wrappers
 {
-    public interface ITaskDelayWrapper
+    public interface ITask
     {
         Task Delay(int millisecondsDelay);
         Task Delay(int millisecondsDelay, CancellationToken cancellationToken);

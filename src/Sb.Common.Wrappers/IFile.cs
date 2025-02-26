@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sb.Common.Wrappers
 {
-    public interface IFileWrapper
+    public interface IFile
     {
         //
         // Summary:

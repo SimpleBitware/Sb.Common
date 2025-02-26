@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Sb.Common.Wrappers
 {
-    public interface IDirectoryWrapper
+    public interface IDirectory
     {
         //
         // Summary:
