@@ -191,7 +191,7 @@ namespace Sb.Common.Wrappers
             return Directory.GetLogicalDrives();
         }
 
-        public DirectoryInfo GetParent(string path)
+        public DirectoryInfo? GetParent(string path)
         {
             return Directory.GetParent(path);
         }

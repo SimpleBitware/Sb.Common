@@ -1254,7 +1254,7 @@ namespace Sb.Common.Wrappers
         //
         //   T:System.Security.SecurityException:
         //     .NET Framework only: The caller does not have the required permissions.
-        DirectoryInfo GetParent(string path);
+        DirectoryInfo? GetParent(string path);
         //
         // Summary:
         //     Moves a file or a directory and its contents to a new location.
